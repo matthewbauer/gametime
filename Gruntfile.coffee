@@ -12,7 +12,7 @@ module.exports = (grunt) ->
         files: [
           {
             expand: true
-            src: ['index.html', 'index.css', 'package.json', 'gametime.db']
+            src: ['index.html', 'index.css', 'package.json', 'db/gametime.db']
             dest: 'app/'
           }
           {
@@ -42,6 +42,8 @@ module.exports = (grunt) ->
         command: 'electron app'
       nw:
         command: 'nw .'
+      db:
+        command: 'cd db; sh mkdb.sh'
   )
   grunt.loadNpmTasks('grunt-electron-app-builder')
   grunt.loadNpmTasks('grunt-contrib-copy')
