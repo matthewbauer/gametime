@@ -1,3 +1,8 @@
+player = require('gametime-player')
+db = require('gametime-db')
+nointro = require('gametime-nointro')
+settings = require('./settings')
+
 $ = require('jquery')
 _ = require('underscore')
 
@@ -5,16 +10,13 @@ $ ->
   Backbone = require('backbone')
   Backbone.$ = $
 
-  player = require('gametime-player')
-  db = require('gametime-db')
-  settings = require('./settings')
-  archive = require('./archive')
-
   app.Game = Backbone.Model.extend
     getROM: (region, cb) ->
-      stmt = db.prepare('select Console.long_name as nointro_console, console, ROM.long_name from ROM join Console on ROM.console = Console.name where game=? and region=? order by size')
+      stmt = db.prepare('select Console.long_name as nointro_console, console,
+      ROM.long_name from ROM join Console on ROM.console = Console.name where
+      game=? and region=? order by size')
       stmt.get @get('title'), region, (err, row) ->
-        archive.getROM row.nointro_console, row.long_name, (buffer) ->
+        nointro.getROM row.nointro_console, row.long_name, (buffer) ->
           cb(row.console, buffer)
       stmt.finalize()
 

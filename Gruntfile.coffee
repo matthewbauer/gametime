@@ -2,17 +2,18 @@ module.exports = (grunt) ->
   pkg = grunt.file.readJSON('package.json')
   grunt.initConfig(
     pkg: pkg
-    'build-atom-shell':
-      buildDir: 'build'
-      tag: 'master'
-      projectName: 'gametime'
-      productName: 'GameTime'
     copy:
       app:
         files: [
           {
             expand: true
-            src: ['index.html', 'index.css', 'package.json', 'db/gametime.db']
+            cwd: 'src'
+            src: ['index.html', 'index.css']
+            dest: 'app/'
+          }
+          {
+            expand: true
+            src: ['package.json']
             dest: 'app/'
           }
           {
@@ -28,6 +29,12 @@ module.exports = (grunt) ->
             dest: 'app/node_modules/'
           }
         ]
+    mochaTest:
+      test:
+        options:
+          reporter: 'spec',
+          require: 'coffee-script/register'
+        src: ['test/*.coffee']
     coffee:
       compile:
         files: [
@@ -43,13 +50,14 @@ module.exports = (grunt) ->
       nw:
         command: 'nw .'
   )
-  grunt.loadNpmTasks('grunt-electron-app-builder')
+  grunt.loadNpmTasks('grunt-mocha-test')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-browserify')
   grunt.loadNpmTasks('grunt-shell')
+  grunt.registerTask('test', ['mochaTest'])
   grunt.registerTask('run', ['coffee:compile', 'copy:app', 'shell:nw'])
   grunt.registerTask('prepublish', ['coffee:compile'])
-  grunt.registerTask('package', ['coffee:compile',
-                                  'copy:app', 'build-atom-shell'])
+  grunt.registerTask('install', ['package'])
+  grunt.registerTask('package', ['coffee:compile', 'copy:app'])
   grunt.registerTask('default', ['run'])
