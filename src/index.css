@@ -3,7 +3,7 @@
 }
 
 /* make the body fill the window */
-html, body {
+html, body, canvas {
 	margin: 0;
 	padding: 0;
 	width: 100%;

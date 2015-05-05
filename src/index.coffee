@@ -14,9 +14,10 @@ $ ->
     getROM: (region, cb) ->
       stmt = db.prepare('select Console.long_name as nointro_console, console,
       ROM.long_name from ROM join Console on ROM.console = Console.name where
-      game=? and region=? order by size')
-      stmt.get @get('title'), region, (err, row) ->
+      game=?')
+      stmt.get @get('title'), (err, row) ->
         nointro.getROM row.nointro_console, row.long_name, (buffer) ->
+          # should verify with checksums
           cb(row.console, buffer)
       stmt.finalize()
 
@@ -50,7 +51,10 @@ $ ->
     play: ->
       @model.getROM settings.region, (c, buffer) ->
         $('#games').hide()
-        player(window, settings.consoles[c][0], buffer, settings)
+        canvas = document.createElement('canvas')
+        document.body.appendChild(canvas)
+        player(canvas.getContext('webgl'), new AudioContext(), window,
+                settings.consoles[c][0], buffer, settings)
 
   app.GamesView = Backbone.View.extend
     el: '#games'
