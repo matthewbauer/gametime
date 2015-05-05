@@ -1,23 +1,20 @@
 $ = require('jquery')
 _ = require('underscore')
+
 $ ->
   Backbone = require('backbone')
   Backbone.$ = $
 
-  settings = require('./settings')
   player = require('gametime-player')
+  db = require('gametime-db')
+  settings = require('./settings')
   archive = require('./archive')
-  sqlite3 = require('sqlite3')
-  db = new sqlite3.Database('gametime.db')
 
   app.Game = Backbone.Model.extend
     getROM: (region, cb) ->
-      stmt = db.prepare('select Console.long_name as long_name, console, ' +
-                        'ROM.long_name as file_name from ROM join Console on ' +
-                        'ROM.console = Console.name where game = ? ' +
-                        'order by size')
+      stmt = db.prepare('select Console.long_name as nointro_console, console, ROM.long_name from ROM join Console on ROM.console = Console.name where game=? and region=? order by size')
       stmt.get @get('title'), region, (err, row) ->
-        archive.getROM row.long_name, row.file_name, (buffer) ->
+        archive.getROM row.nointro_console, row.long_name, (buffer) ->
           cb(row.console, buffer)
       stmt.finalize()
 
@@ -28,10 +25,8 @@ $ ->
       @add new @model(game)
       return
     fetch: ->
-      db.each('select title from Game order by ' +
-      'gameranking desc limit 10', (err, row) =>
-        @addGame(row)
-      )
+      db.each 'select title from Game order by gameranking desc limit 10',
+        (err, row) => @addGame(row)
 
   app.GameView = Backbone.View.extend
     tagName: 'li'
@@ -52,6 +47,7 @@ $ ->
       this
     play: ->
       @model.getROM settings.region, (c, buffer) ->
+        $('#games').hide()
         player(window, settings.consoles[c][0], buffer, settings)
 
   app.GamesView = Backbone.View.extend
@@ -61,7 +57,7 @@ $ ->
       @listenTo @collection, 'reset', @addAll
       @listenTo @collection, 'filter', @filterAll
     addOne: (game) ->
-      view = new (app.GameView)(model: game)
+      view = new app.GameView(model: game)
       @$el.append view.render().el
     addAll: ->
       @$el.html ''
@@ -70,6 +66,7 @@ $ ->
       game.trigger 'visible'
     filterAll: ->
       @collection.each @filterOne, this
+
   games = new app.Games()
   games.fetch()
   new app.GamesView(collection: games)

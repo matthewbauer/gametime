@@ -49,6 +49,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-browserify')
   grunt.loadNpmTasks('grunt-shell')
   grunt.registerTask('run', ['coffee:compile', 'copy:app', 'shell:nw'])
+  grunt.registerTask('prepublish', ['coffee:compile'])
   grunt.registerTask('package', ['coffee:compile',
                                   'copy:app', 'build-atom-shell'])
   grunt.registerTask('default', ['run'])
