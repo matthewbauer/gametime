@@ -53,7 +53,7 @@ $ ->
         $('#games').hide()
         canvas = document.createElement('canvas')
         document.body.appendChild(canvas)
-        player(canvas.getContext('webgl'), new AudioContext(), window,
+        player(window, canvas.getContext('webgl'), new AudioContext(),
                 settings.consoles[c][0], buffer, settings)
 
   app.GamesView = Backbone.View.extend
