@@ -1,0 +1,17 @@
+html, body, canvas {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: default;
+  background-color: black;
+}
+.overlay {
+  position: fixed;
+  z-index: 1;
+}
+.button-quit {
+  color: grey;
+  cursor: pointer;
+}
