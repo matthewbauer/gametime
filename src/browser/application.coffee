@@ -55,19 +55,19 @@ class Application
       @removeAppWindow(appWindow)
     @menu.attachToWindow(appWindow)
 
-    ipc.on 'player-close', (event, player) =>
-      #player.core.serialize()
-      playWindow.close()
-      appWindow = new Games(options)
-      appWindow.show()
-      @windows.push(appWindow)
-      appWindow.on 'closed', =>
-        @removeAppWindow(appWindow)
-      @menu.attachToWindow(appWindow)
+    getSavePath = (rom) ->
+      path.join app.getPath('userData'), 'saves', rom.file_name
+
+    ipc.on 'save', (event, options) ->
+      #fs.writeFile getSavePath(options.rom), options.save
 
     ipc.on 'play', (event, rom) =>
-      appWindow.close()
-      playWindow = new Player(rom: rom)
+      save = null
+      if fs.existsSync getSavePath rom
+        save = fs.readFileSync getSavePath rom
+      playWindow = new Player
+        rom: rom
+        save: save
       playWindow.show()
       @windows.push(playWindow)
       playWindow.on 'closed', =>

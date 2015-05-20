@@ -1,7 +1,7 @@
 {
   "name": "gametime",
   "productName": "GameTime",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "Like Popcorn-Time but for games.",
   "main": "./src/browser/main.js",
   "author": "Matthew Bauer <mjbauer95@gmail.com>",
@@ -23,7 +23,7 @@
     "font-awesome": "^4.3.0",
     "fs-plus": "^2.8.0",
     "fstream": "^1.0.6",
-    "gametime-db": "^0.6.2",
+    "gametime-db": "^0.6.3",
     "gametime-nointro": "^0.5.0",
     "gametime-player": "^0.6.1",
     "jasmine": "^2.3.1",

@@ -7,11 +7,3 @@ html, body, canvas {
   cursor: default;
   background-color: black;
 }
-.overlay {
-  position: fixed;
-  z-index: 1;
-}
-.button-quit {
-  color: grey;
-  cursor: pointer;
-}

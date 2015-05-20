@@ -26,9 +26,7 @@ class Player
       title: "GameTime"
       center: true
       resizable: true
-      frame: false
       show: true
-      'accept-first-mouse': true
       'web-preferences':
         javascript: true
         webgl: true
@@ -41,7 +39,10 @@ class Player
     @window = new BrowserWindow(windowOpts)
 
     @window.on 'closed', (e) =>
-      this.emit 'closed', e
+      @emit 'closed', e
+
+    @window.on 'close', (e) =>
+      @emit 'close', e
 
     @window.on 'devtools-opened', (e) =>
       @window.webContents.send 'window:toggle-dev-tools', true
@@ -60,8 +61,6 @@ class Player
 
     @window.loadUrl targetUrl
     @window.show()
-    @window.focus()
-    @window.focusOnWebView()
 
   reload: ->
     @window.webContents.reload()
