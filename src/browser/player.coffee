@@ -27,6 +27,7 @@ class Player
       center: true
       resizable: true
       show: true
+      fullscreen: true
       'web-preferences':
         javascript: true
         webgl: true

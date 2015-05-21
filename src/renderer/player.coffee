@@ -19,7 +19,7 @@ keymaps =
     'Shift': 'joypad:0:select'
     'k': 'joypad:0:b'
     'j': 'joypad:0:y'
-    'l': 'joypad:0:l'
+    'l': 'joypad:0:a'
     'i': 'joypad:0:x'
     'a': 'joypad:0:left'
     's': 'joypad:0:down'
