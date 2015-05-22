@@ -6,9 +6,10 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: require './package.json'
     app:
-      dir: 'app'
-      dist: 'dist'
+      dir: "#{__dirname}/app"
+      dist: "#{__dirname}/dist"
       icon: 'resources/app.png'
+      ico: 'resources/app.ico'
       icns: 'resources/mac/app.icns'
       dependencies: "<%= Object.keys(pkg.dependencies) %>"
       electron:
@@ -35,32 +36,28 @@ module.exports = (grunt) ->
         options:
           name: '<%= pkg.productName %>'
           dir: '<%= app.dir %>'
-          out: '<%= app.electron.dist %>'
+          out: '<%= app.dist %>'
           version: '<%= app.electron.version %>'
           platform: 'win32'
           arch: 'ia32'
           prune: true
           asar: true
-          icon: '<%= app.icon %>'
+          icon: '<%= app.icn %>'
       'win32-x64':
         options:
           name: '<%= pkg.productName %>'
           dir: '<%= app.dir %>'
-          out: '<%= app.electron.dist %>'
+          out: '<%= app.dist %>'
           version: '<%= app.electron.version %>'
           platform: 'win32'
           arch: 'x64'
           prune: true
           asar: true
-          icon: '<%= app.icon %>'
+          icon: '<%= app.ico %>'
     'download-electron':
       version: '<%= app.electron.version %>'
       outputDir: '<%= app.electron.dir %>'
       rebuild: false
-    'create-windows-installer':
-      appDirectory: '<%= app.dir %>'
-      authors: '<%= pkg.author %>'
-      setupIcon: path.resolve(__dirname, 'resources', 'win', 'app.ico')
     asar:
       app:
         cwd: '<%= app.dir %>'
