@@ -1,4 +1,4 @@
-db = require 'gametime-db'
+db = require './db_asar'
 path = require 'path'
 ipc = require 'ipc'
 

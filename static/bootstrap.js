@@ -1,4 +1,3 @@
-
 // Warning: You almost certainly do *not* want to edit this code - instead, you
 // want to edit src/renderer/main.coffee instead
 window.onload = function() {
@@ -8,20 +7,7 @@ window.onload = function() {
     // Skip "?loadSettings=".
     var loadSettings = JSON.parse(decodeURIComponent(location.search.substr(14)));
 
-    // Require before the module cache in dev mode
-    if (loadSettings.devMode) {
-      require('coffee-script').register();
-      require('../src/babel').register();
-    }
-
-    require('vm-compatibility-layer');
-
-    if (!loadSettings.devMode) {
-      require('coffee-script').register();
-      require('../src/babel').register();
-    }
-
-    require('../src/coffee-cache').register();
+    require('coffee-script').register();
 
     window.loadSettings = loadSettings;
 
