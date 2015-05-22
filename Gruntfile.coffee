@@ -101,7 +101,7 @@ module.exports = (grunt) ->
         dest: '<%= app.dir %>'
         ext: '.js'
   grunt.registerTask('package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg'])
-  grunt.registerTask('package-win', ['electron:win32-ia32', 'electron:win32-x64'])
+  grunt.registerTask('package-win', ['electron:win32-x64'])
   grunt.registerTask('install', ['electron-rebuild'])
   grunt.registerTask('app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies'])
   grunt.registerTask('app.asar', ['app', 'asar'])

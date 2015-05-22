@@ -21,7 +21,7 @@ class Games
     @loadSettings = _.extend(@loadSettings, options)
 
     windowOpts =
-      width: 825
+      width: 850
       height: 825
       title: "GameTime"
       center: true
