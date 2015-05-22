@@ -3,7 +3,7 @@ ipc = require 'ipc'
 Menu = require 'menu'
 path = require 'path'
 
-season = require 'season'
+CSON = require 'season'
 _ = require 'underscore-plus'
 {EventEmitter} = require 'events'
 
@@ -12,8 +12,8 @@ class ApplicationMenu
   _.extend @prototype, EventEmitter.prototype
 
   constructor: (options) ->
-    menuJson = season.resolve(path.join(process.resourcesPath, 'app.asar', 'menus', "#{process.platform}.json"))
-    template = season.readFileSync(menuJson)
+    menuJSON = CSON.resolve(path.normalize "#{__dirname}/../../menus/#{process.platform}")
+    template = CSON.readFileSync(menuJSON)
 
     @template = @translateTemplate(template.menu, options.pkg)
 

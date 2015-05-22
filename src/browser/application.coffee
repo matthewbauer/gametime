@@ -10,7 +10,6 @@ url = require 'url'
 
 {EventEmitter} = require 'events'
 _ = require 'underscore-plus'
-{spawn} = require 'child_process'
 
 AppMenu = require './appmenu'
 Player = require './player'
@@ -21,15 +20,14 @@ class Application
   _.extend @prototype, EventEmitter.prototype
 
   constructor: (options) ->
-    {@resourcePath, @devMode} = options
-
     @pkgJson = require '../../package.json'
     @windows = []
 
     app.on 'window-all-closed', ->
       app.quit() if process.platform in ['win32', 'linux']
 
-    @menu = new AppMenu(pkg: @pkgJson)
+    @menu = new AppMenu
+      pkg: @pkgJson
 
     @menu.on 'application:quit', -> app.quit()
 

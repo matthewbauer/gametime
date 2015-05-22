@@ -3,8 +3,9 @@
   "productName": "GameTime",
   "version": "0.7.0",
   "description": "Like Popcorn-Time but for games.",
-  "main": "./src/browser/main.js",
+  "main": "./index.js",
   "author": "Matthew Bauer <mjbauer95@gmail.com>",
+  "github": "matthewbauer/gametime",
   "repository": {
     "type": "git",
     "url": "https://github.com/matthewbauer/gametime.git"
@@ -12,43 +13,38 @@
   "bugs": {
     "url": "https://github.com/matthewbauer/gametime/issues"
   },
-  "dependencies": {
-    "async": "^0.9.0",
-    "babel-core": "^5.4.3",
-    "backbone": "~1.2.0",
-    "coffee-script": "^1.9.2",
-    "coffeestack": "^1.1.2",
-    "electron-gh-releases": "^1.0.1",
-    "emissary": "^1.3.3",
-    "font-awesome": "^4.3.0",
-    "fs-plus": "^2.8.0",
-    "fstream": "^1.0.6",
-    "gametime-db": "^0.6.4",
-    "gametime-nointro": "^0.5.1",
-    "gametime-player": "^0.6.2",
-    "jasmine": "^2.3.1",
-    "jquery": "~2.1.4",
-    "less-cache": "^0.22.0",
-    "mixto": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "nslog": "^2.0.0",
-    "property-accessors": "^1.1.3",
-    "q": "^2.0.3",
-    "runas": "^2.0.0",
-    "season": "^5.2.0",
-    "semver": "^4.3.4",
-    "serializable": "^1.0.0",
-    "temp": "^0.8.1",
-    "underscore-plus": "*",
-    "vm-compatibility-layer": "^0.1.0",
-    "yargs": "^3.9.0"
-  },
   "scripts": {
-    "preinstall": "node -e 'process.exit(0)'",
-    "test": "node script/test",
-    "bootstrap": "node script/bootstrap",
-    "build": "node script/build",
-    "run": "node script/run",
-    "clean": "node script/clean"
+    "run": "electron .",
+    "install": "grunt install"
+  },
+  "dependencies": {
+    "backbone": "^1.2.0",
+    "coffee-script": "^1.9.2",
+    "electron-gh-releases": "^1.0.1",
+    "fs-plus": "^2.8.1",
+    "gametime-db": "^0.6.7",
+    "gametime-nointro": "^0.5.1",
+    "gametime-player": "^0.6.5",
+    "jquery": "^2.1.4",
+    "season": "^5.2.0",
+    "underscore-plus": "^1.6.6",
+    "yargs": "^3.9.1"
+  },
+  "devDependencies": {
+    "async": "^1.0.0",
+    "electron-prebuilt": "0.26.0",
+    "grunt": "^0.4.5",
+    "grunt-asar": "^0.1.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-cson": "^0.15.0",
+    "grunt-download-electron": "^2.1.1",
+    "grunt-electron": "^1.0.0",
+    "grunt-electron-installer": "^0.32.0",
+    "grunt-github-releaser": "^0.1.17",
+    "grunt-shell": "^1.1.2",
+    "load-grunt-tasks": "^3.1.0",
+    "npm": "^2.10.0"
   }
 }
