@@ -42,8 +42,9 @@
     "grunt-cson": "^0.15.0",
     "grunt-download-electron": "^2.1.1",
     "grunt-electron": "^1.0.0",
-    "grunt-electron-installer": "^0.32.0",
+    "grunt-electron-installer": "^0.33.0",
     "grunt-github-releaser": "^0.1.17",
+    "grunt-rename": "^0.1.4",
     "grunt-shell": "^1.1.2",
     "load-grunt-tasks": "^3.1.0",
     "npm": "^2.10.0"

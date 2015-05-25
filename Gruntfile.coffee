@@ -6,21 +6,25 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: require './package.json'
     app:
-      dir: "#{__dirname}/app"
-      dist: "#{__dirname}/dist"
+      dir: "app"
+      dist: "dist"
       icon: 'resources/app.png'
-      ico: 'resources/app.ico'
+      ico: 'resources/win/app.ico'
       icns: 'resources/mac/app.icns'
       dependencies: "<%= Object.keys(pkg.dependencies) %>"
       electron:
         version: '<%= pkg.devDependencies["electron-prebuilt"] %>'
         dir: '<%= app.dist %>/electron'
         resourcePath: '<%= app.electron.dir %>/Electron.app/Contents/Resources/'
+    'create-windows-installer':
+      appDirectory: '<%= app.dist %>/electron'
+      outputDirectory: '<%= app.dist %>'
+      setupIcon: '<%= app.ico %>'
     electron:
       'darwin-x64':
         options:
           name: '<%= pkg.productName %>'
-          dir: '<%= app.dir %>'
+          dir: "#{__dirname}"
           out: '<%= app.dist %>'
           version: '<%= app.electron.version %>'
           platform: 'darwin'
@@ -78,6 +82,13 @@ module.exports = (grunt) ->
         src: '{<%= app.dependencies %>}/**'
         dest: '<%= app.dir %>/node_modules'
         expand: true
+      asar:
+        src: '<%= app.dist %>/app.asar'
+        dest: '<%= app.electron.dir %>/resources/app.asar'
+    rename:
+      exe:
+        src: '<%= app.electron.dir %>/electron.exe'
+        dest: '<%= app.electron.dir %>/gametime.exe'
     appdmg:
       options:
         title: 'GameTime'
@@ -111,7 +122,7 @@ module.exports = (grunt) ->
     shell:
       run: command: 'electron .'
   grunt.registerTask('package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg'])
-  grunt.registerTask('package-win', ['electron:win32-x64'])
+  grunt.registerTask('package-win', ['app.asar', 'download-electron', 'copy:asar', 'rename:exe', 'create-windows-installer'])
   grunt.registerTask('install', ['electron-rebuild'])
   grunt.registerTask('app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies'])
   grunt.registerTask('app.asar', ['app', 'asar'])
