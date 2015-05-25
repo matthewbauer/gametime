@@ -8,35 +8,19 @@ url = require 'url'
 
 {EventEmitter} = require 'events'
 BrowserWindow = require 'browser-window'
-_ = require 'underscore-plus'
 
 module.exports =
-class Games
-  _.extend @prototype, EventEmitter.prototype
-
-  constructor: (options) ->
-    @loadSettings =
-      bootstrapScript: require.resolve '../renderer/games'
-
-    @loadSettings = _.extend(@loadSettings, options)
-
-    windowOpts =
+class Games extends EventEmitter
+  constructor: ->
+    @window = new BrowserWindow
       width: 850
       height: 825
-      title: "GameTime"
+      title: 'GameTime'
       center: true
       resizable: false
       frame: true
       'web-preferences':
         javascript: true
-        webgl: true
-        webaudio: true
-        'subpixel-font-scaling': true
-        'direct-write': true
-
-    windowOpts = _.extend(windowOpts, @loadSettings)
-
-    @window = new BrowserWindow(windowOpts)
 
     @window.on 'closed', (e) =>
       this.emit 'closed', e
@@ -48,22 +32,16 @@ class Games
       @window.webContents.send 'window:toggle-dev-tools', false
 
   show: ->
-    targetPath = path.resolve(__dirname, '..', '..', 'static', 'games.html')
-
-    targetUrl = url.format
+    @window.loadUrl url.format
       protocol: 'file'
-      pathname: targetPath
-      slashes: true
-      query: {loadSettings: JSON.stringify(@loadSettings)}
-
-    @window.loadUrl targetUrl
+      pathname: path.resolve __dirname, '..', '..', 'static', 'games.html'
     @window.show()
 
   reload: ->
     @window.webContents.reload()
 
   toggleFullScreen: ->
-    @window.setFullScreen(not @window.isFullScreen())
+    @window.setFullScreen not @window.isFullScreen()
 
   toggleDevTools: ->
     @window.toggleDevTools()

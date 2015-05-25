@@ -2,7 +2,7 @@ path = require 'path'
 
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
-  grunt.loadTasks('tasks')
+  grunt.loadTasks 'tasks'
   grunt.initConfig
     pkg: require './package.json'
     app:
@@ -58,6 +58,10 @@ module.exports = (grunt) ->
       version: '<%= app.electron.version %>'
       outputDir: '<%= app.electron.dir %>'
       rebuild: false
+    'create-windows-installer':
+      appDirectory: '<%= app.dir %>'
+      authors: '<%= pkg.author %>'
+      setupIcon: path.resolve __dirname, 'resources', 'win', 'app.ico'
     asar:
       app:
         cwd: '<%= app.dir %>'
@@ -89,7 +93,7 @@ module.exports = (grunt) ->
     cson:
       app:
         expand: true
-        src: ['menus/**/*.cson', 'keymaps/**/*.cson']
+        src: ['menus/**/*.cson', 'keymaps/**/*.cson', 'cores/**/*.cson']
         dest: '<%= app.dir %>'
         ext: '.json'
     coffee:
@@ -100,6 +104,12 @@ module.exports = (grunt) ->
         ]
         dest: '<%= app.dir %>'
         ext: '.js'
+    clean: [
+      'dist'
+      'app'
+    ]
+    shell:
+      run: command: 'electron .'
   grunt.registerTask('package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg'])
   grunt.registerTask('package-win', ['electron:win32-x64'])
   grunt.registerTask('install', ['electron-rebuild'])

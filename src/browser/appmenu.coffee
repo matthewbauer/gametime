@@ -8,18 +8,14 @@ _ = require 'underscore-plus'
 {EventEmitter} = require 'events'
 
 module.exports =
-class ApplicationMenu
-  _.extend @prototype, EventEmitter.prototype
-
-  constructor: (options) ->
-    menuJSON = CSON.resolve(path.normalize "#{__dirname}/../../menus/#{process.platform}")
-    template = CSON.readFileSync(menuJSON)
-
-    @template = @translateTemplate(template.menu, options.pkg)
+class ApplicationMenu extends EventEmitter
+  constructor: (@pkg) ->
+    template = CSON.readFileSync CSON.resolve path.normalize "#{__dirname}/../../menus/#{process.platform}"
+    @template = @translateTemplate template.menu, @pkg
 
   attachToWindow: (window) ->
-    @menu = Menu.buildFromTemplate(_.deepClone(@template))
-    Menu.setApplicationMenu(@menu)
+    @menu = Menu.buildFromTemplate _.deepClone @template
+    Menu.setApplicationMenu @menu
 
   wireUpMenu: (menu, command) ->
     menu.click = => @emit(command)
@@ -31,12 +27,12 @@ class ApplicationMenu
       item.metadata ?= {}
 
       if item.label
-        item.label = (_.template(item.label))(pkgJson)
+        item.label = (_.template item.label) pkgJson
 
       if item.command
         @wireUpMenu item, item.command
 
-      @translateTemplate(item.submenu, pkgJson) if item.submenu
+      @translateTemplate item.submenu, pkgJson if item.submenu
 
     return template
 
@@ -44,14 +40,14 @@ class ApplicationMenu
     firstKeystroke = keystrokesByCommand[command]?[0]
     return null unless firstKeystroke
 
-    modifiers = firstKeystroke.split('-')
+    modifiers = firstKeystroke.split '-'
     key = modifiers.pop()
 
     modifiers = modifiers.map (modifier) ->
-      modifier.replace(/shift/ig, "Shift")
-              .replace(/cmd/ig, "Command")
-              .replace(/ctrl/ig, "Ctrl")
-              .replace(/alt/ig, "Alt")
+      modifier.replace /shift/ig, "Shift"
+              .replace /cmd/ig, "Command"
+              .replace /ctrl/ig, "Ctrl"
+              .replace /alt/ig, "Alt"
 
-    keys = modifiers.concat([key.toUpperCase()])
-    keys.join("+")
+    keys = modifiers.concat [key.toUpperCase()]
+    keys.join "+"

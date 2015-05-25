@@ -15,4 +15,4 @@ update.check (err, status) ->
 
 app.on 'ready', ->
   Application = require './application'
-  global.application = new Application(pkg: require '../../package.json')
+  new Application require '../../package.json'
