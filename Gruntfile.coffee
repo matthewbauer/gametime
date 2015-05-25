@@ -62,10 +62,6 @@ module.exports = (grunt) ->
       version: '<%= app.electron.version %>'
       outputDir: '<%= app.electron.dir %>'
       rebuild: false
-    'create-windows-installer':
-      appDirectory: '<%= app.dir %>'
-      authors: '<%= pkg.author %>'
-      setupIcon: path.resolve __dirname, 'resources', 'win', 'app.ico'
     asar:
       app:
         cwd: '<%= app.dir %>'
@@ -121,9 +117,10 @@ module.exports = (grunt) ->
     ]
     shell:
       run: command: 'electron .'
-  grunt.registerTask('package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg'])
-  grunt.registerTask('package-win', ['app.asar', 'download-electron', 'copy:asar', 'rename:exe', 'create-windows-installer'])
-  grunt.registerTask('install', ['electron-rebuild'])
-  grunt.registerTask('app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies'])
-  grunt.registerTask('app.asar', ['app', 'asar'])
-  grunt.registerTask('default', ['app.asar'])
+  grunt.registerTask 'run', ['shell:run']
+  grunt.registerTask 'package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg']
+  grunt.registerTask 'package-win', ['app.asar', 'download-electron', 'copy:asar', 'rename:exe', 'create-windows-installer']
+  grunt.registerTask 'install', ['electron-rebuild']
+  grunt.registerTask 'app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies']
+  grunt.registerTask 'app.asar', ['app', 'asar']
+  grunt.registerTask 'default', ['app.asar']
