@@ -1,0 +1,42 @@
+/*
+ Based off of some of Popcorn-Time's styling.
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #232323;
+  cursor: default;
+}
+.cards {
+  list-style-type: none;
+}
+.card {
+  margin: 10px;
+  width: 200px;
+  display: inline-block;
+}
+.selected .image {
+  border: 2px solid blue;
+}
+.card .image {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px;
+  cursor: pointer;
+}
+.card .hidden {
+  display: none;
+}
+.card .title {
+  text-overflow: ellipsis;
+  color: white;
+  height: 32px;
+  margin: 6px 0 4px;
+}
+.card .score {
+  color: #5b5b5b;
+  margin: 6px 0 4px;
+}

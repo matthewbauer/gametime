@@ -1,7 +1,7 @@
 {
   "name": "gametime",
   "productName": "GameTime",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Like Popcorn-Time but for games.",
   "main": "./index.js",
   "author": "Matthew Bauer <mjbauer95@gmail.com>",
@@ -18,17 +18,17 @@
     "install": "grunt install"
   },
   "dependencies": {
-    "backbone": "^1.2.0",
-    "coffee-script": "^1.9.2",
-    "electron-gh-releases": "^1.0.1",
-    "fs-plus": "^2.8.1",
+    "atom-keymap": "^5.1.5",
+    "coffee-script": "^1.9.3",
     "gametime-db": "^0.6.7",
     "gametime-nointro": "^0.5.1",
-    "gametime-player": "^0.6.11",
+    "gametime-player": "^0.6.14",
     "jquery": "^2.1.4",
+    "request": "^2.57.0",
     "season": "^5.2.0",
-    "underscore-plus": "^1.6.6",
-    "yargs": "^3.9.1"
+    "space-pen": "^5.1.1",
+    "underscore": "^1.8.3",
+    "unzip": "matthewbauer/node-unzip#global-setimmediate"
   },
   "devDependencies": {
     "async": "^1.0.0",

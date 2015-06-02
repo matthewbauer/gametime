@@ -1,5 +1,5 @@
 fs = require 'fs'
-async = require 'async'
+async = require 'async' # necessary?
 child_process = require('child_process')
 npm = require.resolve('npm/bin/npm-cli')
 
