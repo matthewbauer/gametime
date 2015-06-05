@@ -23,7 +23,6 @@ class Application
         webgl: true
         webaudio: true
         'overlay-scrollbars': true
-    @window.openDevTools()
     @window.loadUrl url.format
       protocol: 'file'
       pathname: path.resolve __dirname, '..', '..', 'static', 'index.html'

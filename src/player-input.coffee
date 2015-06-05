@@ -1,3 +1,5 @@
+RetroPlayer = require 'gametime-player'
+
 module.exports =
 class Input
   states: {}
@@ -7,15 +9,14 @@ class Input
     device = RetroPlayer.retro["DEVICE_#{device}"]
     port = parseInt port
     [port, device, id]
-  constructor: (canvas) ->
-    canvas.addEventListener 'retrodown', (event, arg) =>
-      console.log 'retrodown'
-      [port, device, id] = Input.parse event
+  constructor: (input) ->
+    input.on 'retrodown', (event, arg) =>
+      [port, device, id] = Input.parse arg
       @states[port] ?= {}
       @states[port][device] ?= {}
       @states[port][device][id] = true
-    canvas.addEventListener 'retroup', (event, arg) =>
-      [port, device, id] = Input.parse event
+    input.on 'retroup', (event, arg) =>
+      [port, device, id] = Input.parse arg
       @states[port] ?= {}
       @states[port][device] ?= {}
       @states[port][device][id] = false

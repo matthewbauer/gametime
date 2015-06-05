@@ -6,6 +6,7 @@
 '.selected':
   Enter: 'select:enter'
 '.player':
+  Escape: 'player:quit'
   up: 'retroup'
   down: 'retrodown'
   y: 'joypad:0:y'

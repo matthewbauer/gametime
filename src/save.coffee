@@ -17,3 +17,6 @@ module.exports.getSave = (rom) ->
             resolve save
       else
         resolve null
+
+module.exports.writeSave = (rom, core) ->
+  fs.writeFile getSavePath(rom), core.serialize()

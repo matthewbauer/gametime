@@ -19,11 +19,15 @@ class CardsView extends View
     $(window).on 'scroll', =>
       if $(window).scrollTop() >= $(document).height() - $(window).height() - @scrollTrigger
         @addMore @limit
+    @show()
     @cards.on 'push', @add
+
+  show: ->
     @on 'select:up', => @move 0, -1
     @on 'select:left', => @move -1, 0
     @on 'select:right', => @move 1, 0
     @on 'select:down', => @move 0, 1
+    super()
 
   addMore: (more) ->
     @limit += more

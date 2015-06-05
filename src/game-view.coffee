@@ -1,8 +1,9 @@
 CardView = require './card-view'
+querystring = require 'querystring'
 
 module.exports =
 class GameView extends CardView
   constructor: (@game) ->
     super @game
   enter: =>
-    @trigger 'game:play', @game
+    location.href = "player.html?#{querystring.stringify @game}"

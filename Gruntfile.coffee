@@ -6,8 +6,8 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: require './package.json'
     app:
-      dir: "app"
-      dist: "dist"
+      dir: 'app'
+      dist: 'dist'
       icon: 'resources/app.png'
       ico: 'resources/win/app.ico'
       icns: 'resources/mac/app.icns'
@@ -119,16 +119,8 @@ module.exports = (grunt) ->
       run: command: 'electron .'
   grunt.registerTask 'run', ['shell:run']
   grunt.registerTask 'package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg']
-<<<<<<< HEAD
-  grunt.registerTask 'package-win', ['app.asar', 'download-electron', 'copy:asar', 'rename:exe', 'create-windows-installer']
-  grunt.registerTask 'install', ['electron-rebuild']
-  grunt.registerTask 'app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies']
-  grunt.registerTask 'app.asar', ['app', 'asar']
-  grunt.registerTask 'default', ['app.asar']
-=======
   grunt.registerTask 'package-win', ['electron:win32-x64']
   grunt.registerTask 'install', ['electron-rebuild']
   grunt.registerTask 'app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies']
   grunt.registerTask 'app.asar', ['app', 'asar']
   grunt.registerTask 'default', ['run']
->>>>>>> Lots of stuff.
