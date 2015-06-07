@@ -41,9 +41,7 @@ To play, you'll need to know the key bindings:
 
 `npm install`
 
-`./script/build`
-
-`./script/run`
+`npm run run`
 
 ## Contributing
 If you're interested in helping out, I've got a page of issues that I need some help with:
