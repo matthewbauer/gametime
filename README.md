@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/matthewbauer/gametime.png?label=ready&title=Ready)](https://waffle.io/matthewbauer/gametime)
 # GameTime
 GameTime is like Popcorn Time for retro games.
 
