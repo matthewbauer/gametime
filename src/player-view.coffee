@@ -15,9 +15,11 @@ class PlayerView
     @input = new Input @canvas
     @player = new RetroPlayer @gl, @audio, @input.state, @core, @game, @save
     height = $(window).height()
-    window.resizeTo height / @player.av_info.geometry.aspect_ratio, height
+    newwidth = height / @player.av_info.geometry.aspect_ratio
+    window.resizeTo newwidth, height
+    window.moveBy ($(window).width() - newwidth) / 2, 0
     @player.start()
   stop: =>
+    writeSave @rom, @core.serialize()
     @player.stop()
-    writeSave(@rom, @core)
     location.href = 'index.html'

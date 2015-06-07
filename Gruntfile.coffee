@@ -115,6 +115,15 @@ module.exports = (grunt) ->
       'dist'
       'app'
     ]
+    mochaTest:
+      test:
+        options:
+          reporter: 'spec',
+          require: [
+            'coffee-script/register'
+            'coffee-coverage/register-istanbul'
+          ]
+        src: 'spec/*'
     shell:
       run: command: 'electron .'
   grunt.registerTask 'run', ['shell:run']

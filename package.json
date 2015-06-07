@@ -15,20 +15,23 @@
   },
   "scripts": {
     "run": "electron .",
-    "install": "grunt install"
+    "install": "grunt install",
+    "build": "grunt build"
   },
   "dependencies": {
     "atom-keymap": "^5.1.5",
     "coffee-script": "^1.9.3",
     "gametime-db": "^0.6.7",
-    "gametime-nointro": "^0.5.1",
+    "gametime-nointro": "^0.5.2",
     "gametime-player": "^0.6.14",
+    "gametime-retro": "^0.1.4",
     "jquery": "^2.1.4",
+    "node-retro": "^0.6.11",
     "request": "^2.57.0",
     "season": "^5.2.0",
     "space-pen": "^5.1.1",
     "underscore": "^1.8.3",
-    "unzip": "matthewbauer/node-unzip#global-setimmediate"
+    "unzip": "file:../../../../../var/folders/7d/_f8cf13d4cb2k6x8n5llqwsc0000gn/T/npm-20283-d5343e8e/git-cache-3bea1938cbaf/808e410fdc34a3fdf16cbb04e3613de6dc2113e8"
   },
   "devDependencies": {
     "async": "^1.0.0",

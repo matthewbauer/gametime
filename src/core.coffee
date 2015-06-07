@@ -1,8 +1,15 @@
-CSON = require 'season'
 path = require 'path'
 
-getCore = require 'gametime-player/node_modules/node-retro/get-core'
+CSON = require 'season'
+
+{Core} = require 'node-retro'
+{getCore} = require 'gametime-retro'
+
 cores = CSON.readFileSync CSON.resolve path.normalize "./cores/base"
 
 module.exports.getCore = (rom) ->
-  getCore cores[rom.console]
+  new Promise (resolve, reject) ->
+    getCore cores[rom.console]
+    .then (path) ->
+      resolve new Core path
+    , reject

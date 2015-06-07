@@ -1,12 +1,12 @@
-RetroPlayer = require 'gametime-player'
+retro = require 'node-retro'
 
 module.exports =
 class Input
   states: {}
   @parse: (event) ->
     [device, port, id] = event.toUpperCase().split ':'
-    id = RetroPlayer.retro["DEVICE_ID_#{device}_#{id}"]
-    device = RetroPlayer.retro["DEVICE_#{device}"]
+    id = retro["DEVICE_ID_#{device}_#{id}"]
+    device = retro["DEVICE_#{device}"]
     port = parseInt port
     [port, device, id]
   constructor: (input) ->

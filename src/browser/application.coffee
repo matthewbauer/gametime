@@ -16,7 +16,6 @@ class Application
       height: 600
       title: 'GameTime'
       center: true
-      resizable: false
       frame: true
       'web-preferences':
         javascript: true

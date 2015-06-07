@@ -3,7 +3,7 @@ fs = require 'fs'
 
 app = (require 'remote').require 'app' # alternative?
 module.exports.getSavePath = getSavePath = (rom) ->
-  path.join (app.getPath 'userData'), 'saves', rom.file_name
+  path.join (app.getPath 'userData'), 'saves', (rom.md5.toString 16)
 
 module.exports.getSave = (rom) ->
   new Promise (resolve, reject) ->
@@ -18,5 +18,5 @@ module.exports.getSave = (rom) ->
       else
         resolve null
 
-module.exports.writeSave = (rom, core) ->
-  fs.writeFile getSavePath(rom), core.serialize()
+module.exports.writeSave = (rom, save) ->
+  fs.writeFile getSavePath rom, save
