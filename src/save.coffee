@@ -9,14 +9,14 @@ module.exports.getSave = (rom) ->
   new Promise (resolve, reject) ->
     rompath = getSavePath rom
     fs.exists rompath, (exists) ->
-      if exists
-        fs.readFile rompath, (err, save) ->
-          if err or not save
-            resolve null
-          else
-            resolve save
-      else
+      if not exists
         resolve null
+        return
+      fs.readFile rompath, (err, save) ->
+        if err or not save
+          resolve null
+          return
+        resolve save
 
 module.exports.writeSave = (rom, save) ->
-  fs.writeFile getSavePath rom, save
+  fs.writeFile (getSavePath rom), save

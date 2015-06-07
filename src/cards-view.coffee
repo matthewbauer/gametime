@@ -34,12 +34,12 @@ class CardsView extends View
     _.each @cards.list[@rendered..], @add, @
 
   move: (x, y) ->
-    index = @children().index($('.selected'))
+    index = @children().index $('.selected')
     newIndex = index + x + y * @cardsPerLine
     if newIndex >= 0
       selected = @children().eq(newIndex).view()
       selected.select()
-      $(window).scrollTop(selected.position().top)
+      $(window).scrollTop selected.position().top
 
   add: (card) =>
     if @rendered < @limit

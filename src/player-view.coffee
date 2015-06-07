@@ -20,6 +20,6 @@ class PlayerView
     window.moveBy ($(window).width() - newwidth) / 2, 0
     @player.start()
   stop: =>
-    writeSave @rom, @core.serialize()
     @player.stop()
+    writeSave @rom, @player.core.serialize()
     location.href = 'index.html'

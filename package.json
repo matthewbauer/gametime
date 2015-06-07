@@ -1,7 +1,7 @@
 {
   "name": "gametime",
   "productName": "GameTime",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Like Popcorn-Time but for games.",
   "main": "./index.js",
   "author": "Matthew Bauer <mjbauer95@gmail.com>",
@@ -30,8 +30,7 @@
     "request": "^2.57.0",
     "season": "^5.2.0",
     "space-pen": "^5.1.1",
-    "underscore": "^1.8.3",
-    "unzip": "file:../../../../../var/folders/7d/_f8cf13d4cb2k6x8n5llqwsc0000gn/T/npm-20283-d5343e8e/git-cache-3bea1938cbaf/808e410fdc34a3fdf16cbb04e3613de6dc2113e8"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "async": "^1.0.0",

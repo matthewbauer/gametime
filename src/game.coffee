@@ -15,8 +15,8 @@ class Game extends Model
       '#{@name}'", (err, rom) ->
         if err or not rom
           reject err
-        else
-          resolve rom
+          return
+        resolve rom
   @loadROM: (rom) ->
     Promise.all [
       getCore rom

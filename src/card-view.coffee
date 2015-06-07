@@ -13,7 +13,7 @@ class CardView extends View
     @on 'select:enter', @enter
   select: =>
     @siblings('.selected').view()?.deselect()
-    @addClass('selected')
+    @addClass 'selected'
   deselect: =>
-    @removeClass('selected')
+    @removeClass 'selected'
   enter: ->
