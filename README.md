@@ -1,5 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/matthewbauer/gametime.png?label=ready&title=Ready)](https://waffle.io/matthewbauer/gametime)
-# GameTime
+# GameTime [![Build Status](https://travis-ci.org/matthewbauer/gametime.svg?branch=master)](https://travis-ci.org/matthewbauer/gametime) [![Stories in Ready](https://badge.waffle.io/matthewbauer/gametime.png?label=ready&title=Ready)](https://waffle.io/matthewbauer/gametime)
 GameTime is like Popcorn Time for retro games.
 
 ## Downloads
