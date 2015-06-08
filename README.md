@@ -1,4 +1,4 @@
-# GameTime [![Build Status](https://travis-ci.org/matthewbauer/gametime.svg?branch=master)](https://travis-ci.org/matthewbauer/gametime) [![npm version](http://img.shields.io/npm/v/gametime.svg)](https://npmjs.org/package/gametime) [![Stories in Ready](https://badge.waffle.io/matthewbauer/gametime.png?label=ready&title=Ready)](https://waffle.io/matthewbauer/gametime)
+# GameTime [![Build Status](https://travis-ci.org/matthewbauer/gametime.svg?branch=master)](https://travis-ci.org/matthewbauer/gametime) [![npm version](http://img.shields.io/npm/v/gametime.svg)](https://npmjs.org/package/gametime) [![Dependency Status](https://david-dm.org/matthewbauer/gametime.svg)](https://david-dm.org/matthewbauer/gametime) [![Stories in Ready](https://badge.waffle.io/matthewbauer/gametime.png?label=ready&title=Ready)](https://waffle.io/matthewbauer/gametime)
 
 GameTime is like Popcorn Time for retro games.
 
