@@ -19,16 +19,16 @@
     "build": "grunt build"
   },
   "dependencies": {
-    "atom-keymap": "^5.1.5",
     "coffee-script": "^1.9.3",
+    "cson": "^3.0.1",
     "gametime-db": "^0.6.7",
     "gametime-nointro": "^0.5.2",
-    "gametime-player": "^0.6.14",
+    "gametime-player": "^0.6.16",
     "gametime-retro": "^0.1.4",
     "jquery": "^2.1.4",
-    "node-retro": "^0.6.11",
+    "libretro": "^0.1.1",
+    "node-retro": "^0.6.13",
     "request": "^2.57.0",
-    "season": "^5.2.0",
     "space-pen": "^5.1.1",
     "underscore": "^1.8.3"
   },

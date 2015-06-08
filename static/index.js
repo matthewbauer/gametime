@@ -1,6 +1,9 @@
 // bootstrap script
 
-require('coffee-script').register();
+try {
+  require('coffee-script').register();
+} catch(e) {
+}
 
 window.resizeTo(1200, 600);
 var $ = require('jquery');

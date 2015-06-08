@@ -29,7 +29,7 @@ module.exports = (grunt) ->
           version: '<%= app.electron.version %>'
           platform: 'darwin'
           arch: 'x64'
-          sign: 'Mac Developer: Matthew Bauer (86DMNNXPP9)'
+          sign: '"Mac Developer: Matthew Bauer (86DMNNXPP9)"'
           prune: true
           asar: true
           icon: '<%= app.icns %>'
@@ -126,7 +126,7 @@ module.exports = (grunt) ->
     shell:
       run: command: 'electron .'
   grunt.registerTask 'run', ['shell:run']
-  grunt.registerTask 'package-osx', ['app.asar', 'electron:darwin-x64', 'appdmg']
+  grunt.registerTask 'package-osx', ['app.asar', 'electron:darwin-x64']
   grunt.registerTask 'package-win', ['electron:win32-x64']
   grunt.registerTask 'install', ['electron-rebuild']
   grunt.registerTask 'app', ['coffee:app', 'cson:app', 'copy:app', 'copy:dependencies']

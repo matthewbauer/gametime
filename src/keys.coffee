@@ -1,7 +1,9 @@
-$ = require 'jquery'
-CSON = require 'season'
 path = require 'path'
-keymaps = CSON.readFileSync CSON.resolve path.normalize './keymaps/base.cson'
+
+$ = require 'jquery'
+CSON = require './cson'
+
+keymaps = CSON.requireFile '../keymaps/base'
 
 $(window).on 'keydown', (event) ->
   for selector, keys of keymaps

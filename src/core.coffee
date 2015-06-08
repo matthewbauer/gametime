@@ -1,11 +1,11 @@
-path = require 'path'
+CSON = require './cson'
 
-CSON = require 'season'
+path = require 'path'
 
 {Core} = require 'node-retro'
 {getCore} = require 'gametime-retro'
 
-cores = CSON.readFileSync CSON.resolve path.normalize "./cores/base"
+cores = CSON.requireFile '../cores/base'
 
 module.exports.getCore = (rom) ->
   new Promise (resolve, reject) ->

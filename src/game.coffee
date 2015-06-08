@@ -1,4 +1,4 @@
-Model = require './Model'
+Model = require './model'
 db = require './db_asar'
 PlayerView = require './player-view'
 

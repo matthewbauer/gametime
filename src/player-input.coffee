@@ -1,4 +1,4 @@
-retro = require 'node-retro'
+retro = require 'libretro'
 
 module.exports =
 class Input
