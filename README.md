@@ -3,9 +3,9 @@
 GameTime is like Popcorn Time for retro games.
 
 ## Downloads
-* Windows: [GameTime.exe](https://github.com/matthewbauer/gametime/releases/download/v0.7.4/GameTime.exe)
-* Mac OS X: [GameTime.zip](https://github.com/matthewbauer/gametime/releases/download/v0.7.4/GameTime.zip)
-* Linux: [GameTime.tar.gz](https://github.com/matthewbauer/gametime/archive/v0.7.4.tar.gz) (source code)
+* Windows: [GameTime.exe](https://github.com/matthewbauer/gametime/releases/download/v0.7.5/GameTime.exe.zip)
+* Mac OS X: [GameTime.app](https://github.com/matthewbauer/gametime/releases/download/v0.7.5/GameTime.app.zip)
+* Linux: [GameTime.tar.gz](https://github.com/matthewbauer/gametime/archive/v0.7.5.tar.gz) (source code)
 
 ## Controls
 
