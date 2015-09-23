@@ -1,3 +1,4 @@
+import './play.css!'
 import querystring from 'querystring'
 import retro from 'x-retro'
 import nointro from 'gametime-nointro'
@@ -51,7 +52,7 @@ function play(game) {
     player.md5 = game.romHashMD5
     player.inputs = []
     player.core = core
-    player.game = buffer
+    player.game = new Uint8Array(buffer)
     document.body.appendChild(player)
     player.start()
   })
