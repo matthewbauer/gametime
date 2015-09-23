@@ -7,5 +7,5 @@ if (navigator.serviceWorker)
 var view = new GamesView()
 view.games = games.filter(function(game) {
   return game.systemShortName === 'SNES' && game.releaseCoverFront && game.releaseDescription
-}).slice(0, 10)
+})
 document.body.appendChild(view)
