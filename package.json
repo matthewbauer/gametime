@@ -15,7 +15,7 @@
   "scripts": {
     "start": "http-server",
     "install": "jspm install -y",
-    "build": "jspm bundle --minify --skip-source-maps --inject index.js + play.js + snes9x-next "
+    "build": "jspm bundle --inject index.js + play.js + snes9x-next - 'jspm_packages/npm/openvgdb@1.0.0/db.json!'"
   },
   "dependencies": {},
   "devDependencies": {
