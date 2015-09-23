@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "http-server",
-    "install": "jspm install -y"
+    "install": "jspm install -y",
+    "build": "jspm bundle --minify --skip-source-maps --inject index.js + play.js + snes9x-next "
   },
   "dependencies": {},
   "devDependencies": {
@@ -23,8 +24,10 @@
   },
   "jspm": {
     "dependencies": {
+      "clean-css": "npm:clean-css@^3.4.4",
       "css": "github:systemjs/plugin-css@^0.1.16",
       "gametime-nointro": "npm:gametime-nointro@^1.1.0",
+      "json": "github:systemjs/plugin-json@^0.1.0",
       "openvgdb": "npm:openvgdb@^1.0.0",
       "picodrive": "npm:picodrive@^0.7.0",
       "querystring": "github:jspm/nodelibs-querystring@^0.1.0",

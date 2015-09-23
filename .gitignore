@@ -15,4 +15,4 @@ bower_components
 /dist/
 *.rom
 jspm_packages
-config.js
+!jspm_packages/npm/openvgdb@1.0.0/db.json
