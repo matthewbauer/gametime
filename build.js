@@ -717,6 +717,11 @@ System.registerDynamic("github:jspm/nodelibs-querystring@0.1.0", ["github:jspm/n
 (function() {
 var _removeDefine = System.get("@@amd-helpers").createDefine();
 'format amd';
+if (typeof define !== 'function') {
+  if (typeof require === 'function') {
+    var define = require('amdefine')(module);
+  }
+}
 define(['./core'], function(Core) {
   function addHelpers() {
     this.LANGUAGE_ENGLISH = 0;
@@ -22819,6 +22824,13 @@ System.register('games-view.js', ['npm:babel-runtime@5.8.25/helpers/get', 'npm:b
           value: function attachedCallback() {
             this.classList.add('cards');
           }
+        }, {
+          key: 'addGame',
+          value: function addGame(game) {
+            var view = new GameView();
+            view.game = game;
+            this.appendChild(view);
+          }
         }]);
 
         return _class;
@@ -22829,7 +22841,7 @@ System.register('games-view.js', ['npm:babel-runtime@5.8.25/helpers/get', 'npm:b
 System.register('index.js', ['npm:openvgdb@1.0.0', 'games-view.js'], function (_export) {
   'use strict';
 
-  var games, GamesView, gamesView;
+  var games, GamesView, view;
   return {
     setters: [function (_npmOpenvgdb100) {
       games = _npmOpenvgdb100['default'];
@@ -22840,14 +22852,12 @@ System.register('index.js', ['npm:openvgdb@1.0.0', 'games-view.js'], function (_
 
       if (navigator.serviceWorker) navigator.serviceWorker.register('worker.js');
 
-      gamesView = new GamesView();
+      view = new GamesView();
 
       games.filter(function (game) {
         return game.systemShortName === 'SNES' && game.releaseCoverFront && game.releaseDescription;
       }).forEach(function (game) {
-        var view = new GameView();
-        view.game = game;
-        gamesView.appendChild(view);
+        view.addGame(game);
       });
       document.body.appendChild(view);
     }
