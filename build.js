@@ -717,6 +717,11 @@ System.registerDynamic("github:jspm/nodelibs-querystring@0.1.0", ["github:jspm/n
 (function() {
 var _removeDefine = System.get("@@amd-helpers").createDefine();
 'format amd';
+if (typeof define !== 'function') {
+  if (typeof require === 'function') {
+    var define = require('amdefine')(module);
+  }
+}
 define(['./core'], function(Core) {
   function addHelpers() {
     this.LANGUAGE_ENGLISH = 0;
@@ -22630,7 +22635,7 @@ System.registerDynamic("npm:jszip@2.5.0", ["npm:jszip@2.5.0/lib/index"], true, f
   return module.exports;
 });
 
-System.registerDynamic("npm:gametime-nointro@1.1.0/nointro", ["github:jspm/nodelibs-url@0.1.0", "github:jspm/nodelibs-path@0.1.0", "npm:hctef@0.3.2", "npm:jszip@2.5.0"], true, function(require, exports, module) {
+System.registerDynamic("npm:gametime-nointro@1.1.1/nointro", ["github:jspm/nodelibs-url@0.1.0", "github:jspm/nodelibs-path@0.1.0", "npm:hctef@0.3.2", "npm:jszip@2.5.0"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -22685,8 +22690,8 @@ System.registerDynamic("npm:gametime-nointro@1.1.0/nointro", ["github:jspm/nodel
       }
       collection = "No-Intro-Collection_" + date;
       console = consoles[game.systemShortName];
-      return 'http://crossorigin.me/' + url.format({
-        protocol: 'http',
+      return 'https://crossorigin.herokuapp.com/' + url.format({
+        protocol: 'https',
         hostname: 'ia800500.us.archive.org',
         pathname: "zipview.php",
         query: {
@@ -22724,12 +22729,12 @@ System.registerDynamic("npm:gametime-nointro@1.1.0/nointro", ["github:jspm/nodel
   return module.exports;
 });
 
-System.registerDynamic("npm:gametime-nointro@1.1.0", ["npm:gametime-nointro@1.1.0/nointro"], true, function(require, exports, module) {
+System.registerDynamic("npm:gametime-nointro@1.1.1", ["npm:gametime-nointro@1.1.1/nointro"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = require("npm:gametime-nointro@1.1.0/nointro");
+  module.exports = require("npm:gametime-nointro@1.1.1/nointro");
   global.define = __define;
   return module.exports;
 });
@@ -23322,7 +23327,7 @@ System.register("github:matthewbauer/x-retro@master", ["github:matthewbauer/x-re
     execute: function () {}
   };
 });
-System.register('play.js', ['npm:babel-runtime@5.8.25/helpers/sliced-to-array', 'npm:babel-runtime@5.8.25/core-js/promise', 'play.css!github:systemjs/plugin-css@0.1.17', 'github:jspm/nodelibs-querystring@0.1.0', 'github:matthewbauer/x-retro@master', 'npm:gametime-nointro@1.1.0'], function (_export) {
+System.register('play.js', ['npm:babel-runtime@5.8.25/helpers/sliced-to-array', 'npm:babel-runtime@5.8.25/core-js/promise', 'play.css!github:systemjs/plugin-css@0.1.17', 'github:jspm/nodelibs-querystring@0.1.0', 'github:matthewbauer/x-retro@master', 'npm:gametime-nointro@1.1.1'], function (_export) {
   var _slicedToArray, _Promise, querystring, retro, nointro;
 
   function getCore(game) {
@@ -23391,8 +23396,8 @@ System.register('play.js', ['npm:babel-runtime@5.8.25/helpers/sliced-to-array', 
       querystring = _githubJspmNodelibsQuerystring010['default'];
     }, function (_githubMatthewbauerXRetroMaster) {
       retro = _githubMatthewbauerXRetroMaster['default'];
-    }, function (_npmGametimeNointro110) {
-      nointro = _npmGametimeNointro110['default'];
+    }, function (_npmGametimeNointro111) {
+      nointro = _npmGametimeNointro111['default'];
     }],
     execute: function () {
       'use strict';

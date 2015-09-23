@@ -26,8 +26,8 @@
     "dependencies": {
       "clean-css": "npm:clean-css@^3.4.4",
       "css": "github:systemjs/plugin-css@^0.1.16",
-      "json": "github:systemjs/plugin-json@^0.1.0",
       "gametime-nointro": "npm:gametime-nointro@^1.1.1",
+      "json": "github:systemjs/plugin-json@^0.1.0",
       "openvgdb": "npm:openvgdb@^1.0.0",
       "picodrive": "npm:picodrive@^0.7.0",
       "querystring": "github:jspm/nodelibs-querystring@^0.1.0",
