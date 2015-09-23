@@ -1,1 +1,0 @@
-module.exports = require("npm:detect-node@2.0.3/index");

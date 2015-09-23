@@ -1,1 +1,0 @@
-module.exports = require("npm:hctef@0.3.2/fetch");

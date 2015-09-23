@@ -1,1 +1,0 @@
-module.exports = require("npm:openvgdb@1.0.0/db");
