@@ -717,6 +717,11 @@ System.registerDynamic("github:jspm/nodelibs-querystring@0.1.0", ["github:jspm/n
 (function() {
 var _removeDefine = System.get("@@amd-helpers").createDefine();
 'format amd';
+if (typeof define !== 'function') {
+  if (typeof require === 'function') {
+    var define = require('amdefine')(module);
+  }
+}
 define(['./core'], function(Core) {
   function addHelpers() {
     this.LANGUAGE_ENGLISH = 0;
@@ -22818,11 +22823,6 @@ System.register('games-view.js', ['npm:babel-runtime@5.8.25/helpers/get', 'npm:b
           key: 'attachedCallback',
           value: function attachedCallback() {
             this.classList.add('cards');
-            for (var game in this.games) {
-              var view = new GameView();
-              view.game = this.games[game];
-              this.appendChild(view);
-            }
           }
         }]);
 
@@ -22834,7 +22834,7 @@ System.register('games-view.js', ['npm:babel-runtime@5.8.25/helpers/get', 'npm:b
 System.register('index.js', ['npm:openvgdb@1.0.0', 'games-view.js'], function (_export) {
   'use strict';
 
-  var games, GamesView, view;
+  var games, GamesView, gamesView;
   return {
     setters: [function (_npmOpenvgdb100) {
       games = _npmOpenvgdb100['default'];
@@ -22842,11 +22842,18 @@ System.register('index.js', ['npm:openvgdb@1.0.0', 'games-view.js'], function (_
       GamesView = _gamesViewJs['default'];
     }],
     execute: function () {
-      view = new GamesView();
 
-      view.games = games.filter(function (game) {
-        return game.systemShortName === 'SNES';
-      }).slice(0, 10);
+      if (navigator.serviceWorker) navigator.serviceWorker.register('worker.js');
+
+      gamesView = new GamesView();
+
+      games.filter(function (game) {
+        return game.systemShortName === 'SNES' && game.releaseCoverFront && game.releaseDescription;
+      }).forEach(function (game) {
+        var view = new GameView();
+        view.game = game;
+        gamesView.appendChild(view);
+      });
       document.body.appendChild(view);
     }
   };
