@@ -717,11 +717,6 @@ System.registerDynamic("github:jspm/nodelibs-querystring@0.1.0", ["github:jspm/n
 (function() {
 var _removeDefine = System.get("@@amd-helpers").createDefine();
 'format amd';
-if (typeof define !== 'function') {
-  if (typeof require === 'function') {
-    var define = require('amdefine')(module);
-  }
-}
 define(['./core'], function(Core) {
   function addHelpers() {
     this.LANGUAGE_ENGLISH = 0;
