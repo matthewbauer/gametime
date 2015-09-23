@@ -1,0 +1,1 @@
+module.exports = require("github:stuk/jszip@2.5.0/lib/index");

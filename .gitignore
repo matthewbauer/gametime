@@ -14,5 +14,3 @@ bower_components
 /app/
 /dist/
 *.rom
-jspm_packages
-config.js
