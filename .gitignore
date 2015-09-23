@@ -11,7 +11,8 @@ debug.log
 /tags
 /static/components/
 bower_components
-/electron/
 /app/
 /dist/
 *.rom
+jspm_packages
+config.js

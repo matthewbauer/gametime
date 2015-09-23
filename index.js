@@ -1,9 +1,6 @@
-if (process.type === 'browser') {
-  require('coffee-script/register');
-  require('app').on('ready', function() {
-    new require('./src/browser/application')(require('./package.json'));
-  });
-} else {
-  var electron = require('electron-prebuilt');
-  var child = require('child_process').spawn(electron, [__dirname]);
-}
+import games from 'openvgdb'
+import GamesView from './games-view'
+
+var view = new GamesView()
+view.games = games.slice(0, 10)
+document.body.appendChild(view)

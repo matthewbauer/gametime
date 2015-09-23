@@ -17,10 +17,10 @@ html, body {
   width: 200px;
   display: inline-block;
 }
-.selected .image {
+.selected .cover {
   border: 2px solid blue;
 }
-.card .image {
+.card .cover {
   width: 200px;
   height: 200px;
   border-radius: 4px;
@@ -34,9 +34,5 @@ html, body {
   text-overflow: ellipsis;
   color: white;
   height: 32px;
-  margin: 6px 0 4px;
-}
-.card .score {
-  color: #5b5b5b;
   margin: 6px 0 4px;
 }
