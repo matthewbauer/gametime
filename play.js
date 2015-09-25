@@ -3,6 +3,7 @@ import querystring from 'querystring'
 import 'x-game'
 import nointro from 'gametime-nointro'
 import KeyPad from 'keypad'
+import localForage from 'localforage'
 
 function getCore(game) {
   return System.import({
@@ -47,7 +48,6 @@ function getCore(game) {
 function play(game) {
   var player = document.createElement('canvas', 'x-retro')
   document.body.appendChild(player)
-  player.md5 = game.romHashMD5
   player.inputs = []
   if ('getGamepads' in navigator)
     player.inputs = navigator.getGamepads()
@@ -80,10 +80,16 @@ function play(game) {
     })
   return Promise.all([
     nointro.getROM(game),
-    getCore(game)
-  ]).then(function([buffer, core]) {
+    getCore(game),
+    localForage.getItem(game.romHashMD5)
+  ]).then(function([buffer, core, save]) {
     player.core = core
     player.game = new Uint8Array(buffer)
+    if (save)
+      player.save = save
+    setInterval(function() {
+      localForage.setItem(game.romHashMD5, new Uint8Array(player.save))
+    }, 1000)
     player.start()
   })
 }
