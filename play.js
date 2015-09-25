@@ -1,6 +1,6 @@
 import './play.css!'
 import querystring from 'querystring'
-import retro from 'x-retro'
+import 'x-game'
 import nointro from 'gametime-nointro'
 import KeyPad from 'keypad'
 
