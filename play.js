@@ -2,7 +2,6 @@ import './play.css!'
 import querystring from 'querystring'
 import 'x-game'
 import nointro from 'gametime-nointro'
-import KeyPad from 'keypad'
 import localForage from 'localforage'
 
 function getCore(game) {
@@ -50,34 +49,9 @@ function play(game) {
   document.body.appendChild(player)
   player.inputs = []
   if ('getGamepads' in navigator)
-    player.inputs = navigator.getGamepads()
-  if (!player.inputs[0])
-    player.inputs[0] = new KeyPad(window, {
-      9: 8,
-      13: 9,
-      16: 8,
-      18: 1,
-      32: 0,
-      37: 14,
-      38: 12,
-      39: 15,
-      40: 13,
-      65: 1,
-      66: 0,
-      68: 15,
-      73: 3,
-      74: 2,
-      75: 0,
-      76: 1,
-      82: 5,
-      83: 13,
-      87: 12,
-      88: 3,
-      89: 2,
-      90: 3,
-      91: 2,
-      222: 8
-    })
+    player.input_poll = function() {
+      player.inputs = navigator.getGamepads()
+    }
   return Promise.all([
     nointro.getROM(game),
     getCore(game),
@@ -86,7 +60,7 @@ function play(game) {
     player.core = core
     player.game = new Uint8Array(buffer)
     if (save)
-      player.save = save
+      player.save = new Uint8Array(save)
     setInterval(function() {
       localForage.setItem(game.romHashMD5, new Uint8Array(player.save))
     }, 1000)
