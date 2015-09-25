@@ -45,13 +45,9 @@ function getCore(game) {
 }
 
 function play(game) {
-  var player = document.createElement('canvas', 'x-retro')
+  var player = document.createElement('canvas', 'x-game')
   document.body.appendChild(player)
   player.inputs = []
-  if ('getGamepads' in navigator)
-    player.input_poll = function() {
-      player.inputs = navigator.getGamepads()
-    }
   return Promise.all([
     nointro.getROM(game),
     getCore(game),
@@ -61,6 +57,9 @@ function play(game) {
     player.game = new Uint8Array(buffer)
     if (save)
       player.save = new Uint8Array(save)
+    player.core.set_input_poll(function() {
+      player.player.inputs = navigator.getGamepads()
+    })
     setInterval(function() {
       localForage.setItem(game.romHashMD5, new Uint8Array(player.save))
     }, 1000)
