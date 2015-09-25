@@ -50,9 +50,9 @@ function play(game) {
   player.md5 = game.romHashMD5
   player.inputs = []
   if ('getGamepads' in navigator)
-    retro.inputs = navigator.getGamepads()
-  if (!retro.inputs[0])
-    retro.inputs[0] = new KeyPad(window, {
+    player.inputs = navigator.getGamepads()
+  if (!player.inputs[0])
+    player.inputs[0] = new KeyPad(window, {
       9: 8,
       13: 9,
       16: 8,
