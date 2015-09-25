@@ -1,4 +1,4 @@
-import games from 'openvgdb'
+import games from 'openvgdb-snes'
 import GamesView from './games-view'
 
 var view = new GamesView()
