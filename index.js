@@ -4,7 +4,7 @@ import querystring from 'querystring'
 
 document.body.classList.add('cards')
 games.filter(function(game) {
-  return game.releaseCoverFront && game.releaseDescription
+  return game.releaseCoverFront && game.releaseDescription && (game.regionName === 'USA' || game.regionName === 'World')
 }).forEach(function(game) {
   var view = document.createElement('a')
 
