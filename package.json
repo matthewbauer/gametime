@@ -15,7 +15,7 @@
   "scripts": {
     "start": "http-server",
     "install": "jspm install -y",
-    "build": "jspm bundle --minify --inject index.js + play.js + snes9x-next"
+    "build": "jspm bundle --inject index.js + play.js + snes9x-next"
   },
   "dependencies": {},
   "devDependencies": {
