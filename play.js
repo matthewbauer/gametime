@@ -2,6 +2,7 @@ import './play.css!'
 import querystring from 'querystring'
 import retro from 'x-retro'
 import nointro from 'gametime-nointro'
+import KeyPad from 'keypad'
 
 function getCore(game) {
   return System.import({
@@ -44,16 +45,45 @@ function getCore(game) {
 }
 
 function play(game) {
+  var player = document.createElement('canvas', 'x-retro')
+  document.body.appendChild(player)
+  player.md5 = game.romHashMD5
+  player.inputs = []
+  if ('getGamepads' in navigator)
+    retro.inputs = navigator.getGamepads()
+  if (!retro.inputs[0])
+    retro.inputs[0] = new KeyPad(window, {
+      9: 8,
+      13: 9,
+      16: 8,
+      18: 1,
+      32: 0,
+      37: 14,
+      38: 12,
+      39: 15,
+      40: 13,
+      65: 1,
+      66: 0,
+      68: 15,
+      73: 3,
+      74: 2,
+      75: 0,
+      76: 1,
+      82: 5,
+      83: 13,
+      87: 12,
+      88: 3,
+      89: 2,
+      90: 3,
+      91: 2,
+      222: 8
+    })
   return Promise.all([
     nointro.getROM(game),
     getCore(game)
   ]).then(function([buffer, core]) {
-    var player = document.createElement('canvas', 'x-retro')
-    player.md5 = game.romHashMD5
-    player.inputs = []
     player.core = core
     player.game = new Uint8Array(buffer)
-    document.body.appendChild(player)
     player.start()
   })
 }
