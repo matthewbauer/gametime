@@ -1,5 +1,5 @@
 import games from 'openvgdb-snes'
-import 'games-view.css!'
+import './games-view.css!'
 import querystring from 'querystring'
 
 document.body.classList.add('cards')

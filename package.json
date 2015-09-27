@@ -33,7 +33,7 @@
       "openvgdb-snes": "npm:openvgdb-snes@^1.0.2",
       "querystring": "github:jspm/nodelibs-querystring@^0.1.0",
       "snes9x-next": "npm:snes9x-next@^0.7.5",
-      "x-game": "github:matthewbauer/x-game@^1.1.1"
+      "x-game": "github:matthewbauer/x-game@^1.1.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
