@@ -61,7 +61,7 @@ function play(game) {
       player.player.inputs = navigator.getGamepads()
       for (var g in player.player.inputs)
         if (player.player.inputs[g] && g !== 'length' && g !== 'item' && player.player.inputs[g].buttons[16].pressed)
-          location.href = '/'
+          history.back()
     })
     setInterval(function() {
       localForage.setItem(game.romHashMD5, new Uint8Array(player.save))
