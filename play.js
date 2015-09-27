@@ -59,6 +59,9 @@ function play(game) {
       player.save = new Uint8Array(save)
     player.core.set_input_poll(function() {
       player.player.inputs = navigator.getGamepads()
+      for (var g in player.player.inputs)
+        if (player.player.inputs[g] && g !== 'length' && g !== 'item' && player.player.inputs[g].buttons[16].pressed)
+          location.href = '/'
     })
     setInterval(function() {
       localForage.setItem(game.romHashMD5, new Uint8Array(player.save))
