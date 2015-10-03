@@ -3,9 +3,10 @@
   "description": "Like Popcorn Time but for retro games.",
   "version": "1.0.0",
   "manifest_version": 2,
+  "launch_path": "/gametime/",
   "icons": {
-    "512": "icon-512.png",
-    "128": "icon-128.png"
+    "512": "/gametime/icon-512.png",
+    "128": "/gametime/icon-128.png"
   },
   "developer": {
     "name": "Matthew Bauer",
