@@ -1,6 +1,8 @@
 {
   "name": "GameTime",
-  "description": "",
+  "description": "Like Popcorn Time but for retro games.",
+  "version": "1.0.0",
+  "manifest_version": 2,
   "icons": {
     "512": "/img/icon-512.png",
     "128": "/img/icon-128.png"
@@ -9,5 +11,6 @@
     "name": "Matthew Bauer",
     "url": "https://matthewbauer.us"
   },
-  "chrome": { "navigation": false }
+  "chrome": { "navigation": false },
+  
 }
