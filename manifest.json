@@ -11,6 +11,5 @@
     "name": "Matthew Bauer",
     "url": "https://matthewbauer.us"
   },
-  "chrome": { "navigation": false },
-  
+  "chrome": { "navigation": false }
 }
