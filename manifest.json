@@ -1,9 +1,12 @@
 {
-  "app": {},
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
   "manifest_version": 2,
   "name": "GameTime",
   "version": "1.0.0",
-  "default_locale": "en",
   "description": "Like Popcorn Time but for retro games.",
   "icons": {
     "512": "icon-512.png",
@@ -13,5 +16,6 @@
     "name": "Matthew Bauer",
     "url": "https://matthewbauer.us"
   },
-  "permissions": ["tabs"]
+  "permissions": [],
+  "content_security_policy": "script-src 'self' 'sha256-1PDvc1q2LRiL5Q3JOdeR2frI1zVJHIkT22zjdRCwKGI=' 'sha256-0BRGWCY4IXQl4RGdSm46Rt96KxK2eiFL4F7tDhu4RxI=' 'unsafe-eval'; object-src 'self"
 }
