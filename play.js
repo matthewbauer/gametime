@@ -3,51 +3,17 @@ import querystring from 'querystring'
 import 'x-game'
 import nointro from 'gametime-nointro'
 import localForage from 'localforage'
+import settings from './settings.json!'
 
 function getCore(game) {
-  return System.import({
-    '32X': 'picodrive',
-    '5200': 'mess',
-    '7800': 'prosystem',
-    'ColecoVision': 'colem',
-    'FDS': 'snes9x-next',
-    'GB': 'gambatte',
-    'GBC': 'gambatte',
-    'GBA': 'vba-next',
-    'GG': 'picodrive',
-    'Jaguar': 'virtualjaguar',
-    'Lynx': 'handy',
-    'MD': 'picodrive',
-    'N64': 'mupen64plus',
-    'NES': 'nestopia',
-    'NGP': 'mame',
-    'NGPC': 'mame',
-    'PCE': 'pcejin',
-    'SG1000': 'picodrive',
-    'SMS': 'picodrive',
-    'SNES': 'snes9x-next',
-    'SuperGrafx': 'pcejin',
-    'VB': 'vba-next',
-    'Vectrex': 'vecx',
-    'WonderSwan': 'oswan',
-    'WonderSwan Color': 'oswan',
-    'MAME': 'mame',
-    'PSX': 'pcsx',
-    'SCD': 'picodrive',
-    'Saturn': 'yabause',
-    'PCECD': 'pcejin',
-    'PSP': 'ppsspp',
-    'NDS': 'desmume',
-    '2600': 'mess',
-    'Odyssey2': 'o2em',
-    'Intellivision': 'nostalgia'
-  }[game.systemShortName])
+  return System.import(settings.cores[game.systemShortName])
 }
 
+var player = document.createElement('canvas', 'x-game')
+document.body.appendChild(player)
+player.inputs = []
+
 function play(game) {
-  var player = document.createElement('canvas', 'x-game')
-  document.body.appendChild(player)
-  player.inputs = []
   return Promise.all([
     nointro.getROM(game),
     getCore(game),
@@ -58,11 +24,24 @@ function play(game) {
     if (save)
       player.save = new Uint8Array(save)
     player.core.set_input_poll(function() {
-      player.player.inputs = navigator.getGamepads()
+      if ('getGamepads' in navigator)
+        player.player.inputs = navigator.getGamepads()
       for (var g in player.player.inputs)
-        if (player.player.inputs[g] && g !== 'length' && g !== 'item' && player.player.inputs[g].buttons[16].pressed)
+        if (player.player.inputs[g] && g !== 'length' && g !== 'item' && player.player.inputs[g].buttons[16] && player.player.inputs[g].buttons[16].pressed)
           history.back()
     })
+    function onkey(event) {
+      if (player.player && settings.keys.hasOwnProperty(event.which)) {
+        if (!player.player.inputs[0])
+          player.player.inputs[0] = {buttons: {}}
+        if (!player.player.inputs[0].buttons[settings.keys[event.which]])
+          player.player.inputs[0].buttons[settings.keys[event.which]] = {}
+        player.player.inputs[0].buttons[settings.keys[event.which]].pressed = event.type === 'keydown'
+        event.preventDefault()
+      }
+    }
+    window.addEventListener('keydown', onkey)
+    window.addEventListener('keyup', onkey)
     setInterval(function() {
       localForage.setItem(game.romHashMD5, new Uint8Array(player.save))
     }, 1000)
