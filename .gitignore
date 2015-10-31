@@ -2,3 +2,5 @@ node_modules
 jspm_packages
 config.js
 *.pem
+build.js
+build.js.map

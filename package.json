@@ -14,7 +14,9 @@
   },
   "scripts": {
     "start": "http-server",
-    "install": "jspm install -y"
+    "install": "jspm install -y",
+    "build": "jspm bundle index.js + play.js",
+    "test": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -36,6 +38,7 @@
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "clean-css": "npm:clean-css@^3.4.6",
       "core-js": "npm:core-js@^1.1.4",
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
