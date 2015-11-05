@@ -15,7 +15,8 @@
   "scripts": {
     "start": "http-server",
     "install": "jspm install -y",
-    "build": "jspm bundle --inject index.js + play.js + snes9x-next"
+    "build": "jspm bundle --inject index.js + play.js + snes9x-next",
+    "test": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -33,11 +34,12 @@
       "openvgdb-snes": "npm:openvgdb-snes@^1.0.2",
       "querystring": "github:jspm/nodelibs-querystring@^0.1.0",
       "snes9x-next": "npm:snes9x-next@^0.7.5",
-      "x-game": "github:matthewbauer/x-game@^1.1.2"
+      "x-game": "github:matthewbauer/x-game@^1.2.1"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "clean-css": "npm:clean-css@^3.4.6",
       "core-js": "npm:core-js@^1.1.4",
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"

@@ -1,3 +1,6 @@
 language: node_js
 node_js:
-  - "iojs"
+- 5.0
+env:
+  global:
+    secure: CF3I1EyXXSMr4FJYEvifIBuyDMjJkobyLEgLxpJHZv+seVcsHDjnEQXlqBUqswMPM67ZwMY0SGs2kAD0rRxX+DWLfmvvF6w2BbAIORNM6zHG6HXZyoS0kfmDs+Aq3XOgGno2KKmTS4NA83gxsa7zuiYURWh1jaVjoebHj9p/o74=
